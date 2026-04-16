@@ -76,4 +76,17 @@
             const container = document.getElementById('members');
             container.innerHTML = '';
             
-            all.slice(
+            all.slice(0, 8).forEach(m => {
+                const d = new Date(m.joined * 1000);
+                const card = document.createElement('a');
+                card.href = `https://www.chess.com/member/${m.username}`;
+                card.className = 'card';
+                card.innerHTML = `<span class="username">@${m.username}</span><span class="status">${d.toLocaleDateString()}<br>${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span>`;
+                container.appendChild(card);
+            });
+        } catch (e) { console.error("Update failed", e); }
+    }
+    updateDashboard();
+</script>
+</body>
+</html>
