@@ -82,8 +82,22 @@
             background: linear-gradient(90deg, #e67e22, #f1c40f); 
             height: 100%; 
             width: 0%; 
-            transition: width 2s ease-in-out; 
+            transition: width 2s ease-in-out, background 1s; 
         }
+
+        /* Milestone Animation */
+        .milestone-reached {
+            background: linear-gradient(90deg, #f1c40f, #ffffff) !important;
+            box-shadow: 0 0 10px #f1c40f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
         .stats-text { 
             font-family: monospace; 
             font-size: 12px; 
@@ -127,7 +141,7 @@
     <div class="tracker-box">
         <div id="tracker-text" class="stats-text">Loading Club Stats...</div>
         <div class="bar-bg"><div id="progress-bar" class="bar-fill"></div></div>
-        <div class="stats-text">✅ 25: 01-16 | ✅ 50: 02-07 | ⚪ 100:🔜</div>
+        <div id="milestone-labels" class="stats-text">Calculating milestones...</div>
     </div>
 
     <div class="section-title">🏆 HALL OF FAME</div>
@@ -151,14 +165,29 @@
             const profData = await profRes.json();
             
             const count = profData.members_count;
-            const goal = 100;
+            
+            // Automatic goal logic: sets goal to the next 100 (100, 200, 300...)
+            const goal = Math.ceil((count + 1) / 100) * 100; 
             const percent = Math.min((count / goal) * 100, 100);
 
+            const progressBar = document.getElementById('progress-bar');
             document.getElementById('tracker-text').innerText = `Current Milestone: ${count} / ${goal} Members`;
             
+            // Trigger pulse effect if near the goal
+            if (percent >= 95) {
+                progressBar.classList.add('milestone-reached');
+            } else {
+                progressBar.classList.remove('milestone-reached');
+            }
+
             setTimeout(() => {
-                document.getElementById('progress-bar').style.width = percent + '%';
+                progressBar.style.width = percent + '%';
             }, 500);
+
+            // Dynamic bottom text
+            const previousMilestone = goal - 100;
+            document.getElementById('milestone-labels').innerHTML = 
+                `✅ ${previousMilestone} reached | ⚪ Next Goal: ${goal} | 🔥 Keep Sizzling!`;
 
             const all = [...memData.weekly, ...memData.monthly, ...memData.all_time];
             all.sort((a, b) => b.joined - a.joined);
@@ -185,6 +214,8 @@
     }
 
     updateDashboard();
+    // Refresh every 5 minutes
+    setInterval(updateDashboard, 300000); 
 </script>
 
 </body>
