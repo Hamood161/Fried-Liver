@@ -32,10 +32,10 @@
 <div class="container">
     <div class="section-title">📋 THE MENU</div>
     <div class="card-list">
-        <a href="https://www.chess.com/club/the-tomato-club-1" class="card"><span>🤝 PARTNERSHIPS</span><span>Join</span></a>
-        <a href="https://www.chess.com/club/the-fried-liver-society" class="card"><span>🛡️ ACTIVE CHECK</span><span>Confirm</span></a>
-        <a href="https://www.chess.com/club/the-fried-liver-society/forum/view/100-cheer-challenge-3" class="card"><span>🙌 CHEER CHALLENGE</span><span>Win!</span></a>
-        <a href="https://www.chess.com/club/the-fried-liver-society/forum" class="card"><span>✍️ CREATE FORUM</span><span>Post</span></a>
+        <a href="https://www.chess.com/club/the-tomato-club-1" class="card" target="_blank"><span>🤝 PARTNERSHIPS</span><span>Join</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society" class="card" target="_blank"><span>🛡️ ACTIVE CHECK</span><span>Confirm</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society/forum/view/100-cheer-challenge-3" class="card" target="_blank"><span>🙌 CHEER CHALLENGE</span><span>Win!</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society/forum" class="card" target="_blank"><span>✍️ CREATE FORUM</span><span>Post</span></a>
     </div>
 
     <div class="section-title">📈 LIVE GROWTH TRACKER</div>
@@ -47,10 +47,10 @@
 
     <div class="section-title">🏆 HALL OF FAME</div>
     <div class="card-list">
-        <a href="https://www.chess.com/member/eeveedoeschess" class="card"><span>🌟 @EeveeDoesCHESS</span></a>
-        <a href="https://www.chess.com/member/allenspeckhals" class="card"><span>🌟 @AllenSpeckhals</span></a>
-        <a href="https://www.chess.com/member/conan10edogawa" class="card"><span>🌟 @Conan10Edogawa</span></a>
-        <a href="https://www.chess.com/member/trimitziosp7" class="card"><span>🌟 @TrimitziosP7 (FM)</span></a>
+        <a href="https://www.chess.com/member/eeveedoeschess" class="card" target="_blank"><span>🌟 @EeveeDoesCHESS</span></a>
+        <a href="https://www.chess.com/member/allenspeckhals" class="card" target="_blank"><span>🌟 @AllenSpeckhals</span></a>
+        <a href="https://www.chess.com/member/conan10edogawa" class="card" target="_blank"><span>🌟 @Conan10Edogawa</span></a>
+        <a href="https://www.chess.com/member/trimitziosp7" class="card" target="_blank"><span>🌟 @TrimitziosP7 (FM)</span></a>
     </div>
 </div>
 
@@ -80,6 +80,7 @@
                 const d = new Date(m.joined * 1000);
                 const card = document.createElement('a');
                 card.href = `https://www.chess.com/member/${m.username}`;
+                card.target = "_blank"; // This opens the link in a new tab
                 card.className = 'card';
                 card.innerHTML = `<span class="username">@${m.username}</span><span class="status">${d.toLocaleDateString()}<br>${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span>`;
                 container.appendChild(card);
