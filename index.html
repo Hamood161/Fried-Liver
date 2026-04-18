@@ -78,6 +78,29 @@
 <script>
     const CLUB_SLUG = 'the-fried-liver-society';
 
+    // Helper to calculate relative time
+    function getRelativeTime(timestamp) {
+        const now = new Date();
+        const joined = new Date(timestamp * 1000);
+        const diffInSeconds = Math.floor((now - joined) / 1000);
+
+        if (diffInSeconds < 60) return 'just now';
+        
+        const minutes = Math.floor(diffInSeconds / 60);
+        if (minutes < 60) return `${minutes}m ago`;
+        
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return `${hours}h ago`;
+        
+        const days = Math.floor(hours / 24);
+        if (days < 30) return `${days}d ago`;
+        
+        const months = Math.floor(days / 30);
+        if (months < 12) return `${months}mo ago`;
+        
+        return `${Math.floor(months / 12)}y ago`;
+    }
+
     async function updateDashboard() {
         try {
             const memRes = await fetch(`https://api.chess.com/pub/club/${CLUB_SLUG}/members`);
@@ -106,33 +129,36 @@
             const previousMilestone = goal - 100;
             document.getElementById('milestone-labels').innerHTML = `✅ ${previousMilestone} reached | ⚪ Next Goal: ${goal} | 🔥 Keep Sizzling!`;
 
+            // Combine and sort members by join date (most recent first)
             const all = [...memData.weekly, ...memData.monthly, ...memData.all_time];
             all.sort((a, b) => b.joined - a.joined);
 
             const container = document.getElementById('members');
             container.innerHTML = '';
 
+            // Display top 8 most recent arrivals
             all.slice(0, 8).forEach(m => {
-                const d = new Date(m.joined * 1000);
+                const relativeTime = getRelativeTime(m.joined);
                 const card = document.createElement('a');
                 card.href = `https://www.chess.com/member/${m.username}`;
                 card.target = "_blank";
                 card.rel = "noopener noreferrer";
                 card.className = 'card';
-                card.innerHTML = `<span class="username">@${m.username}</span><span class="status">${d.toLocaleDateString()}<br>${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span>`;
+                card.innerHTML = `
+                    <span class="username">@${m.username}</span>
+                    <span class="status" style="color: #f1c40f;">${relativeTime}</span>
+                `;
                 container.appendChild(card);
             });
         } catch (e) {
-            console.error("Update failed", e);
+            console.error("The kitchen is lagging!", e);
         }
     }
 
+    // Run immediately and then every minute to keep relative times fresh
     updateDashboard();
-    setInterval(updateDashboard, 300000);
+    setInterval(updateDashboard, 60000);
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
