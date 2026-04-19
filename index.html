@@ -11,16 +11,16 @@
         .header h2 { margin: 0; color: #e67e22; font-size: 18px; text-transform: uppercase; }
         .section-title { font-size: 14px; color: #e67e22; margin-top: 15px; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid #444; padding-bottom: 5px; }
         .card-list { display: flex; flex-direction: column; gap: 8px; }
-        .card { background: #312e2b; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #e67e22; text-decoration: none; color: white; transition: 0.2s; cursor: pointer; }
+        .card { background: #312e2b; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #e67e22; text-decoration: none; color: white; transition: 0.2s; }
         .username { font-weight: bold; }
         .status { font-size: 11px; color: #999; text-align: right; }
         a.card:hover { background: #3c3934; border-left-color: #f1c40f; transform: translateX(5px); }
         .tracker-box { background: #000; padding: 12px; border-radius: 4px; border: 1px solid #444; }
         .bar-bg { background: #333; height: 12px; border-radius: 6px; overflow: hidden; margin: 10px 0; }
-        .bar-fill { background: linear-gradient(90deg, #e67e22, #f1c40f); height: 100%; width: 0%; transition: width 2s ease-in-out, background 1s; }
-        .milestone-reached { background: linear-gradient(90deg, #f1c40f, #ffffff) !important; box-shadow: 0 0 10px #f1c40f; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        .bar-fill { background: linear-gradient(90deg, #e67e22, #f1c40f); height: 100%; width: 0%; transition: width 2s ease-in-out; }
         .stats-text { font-family: monospace; font-size: 12px; color: #f1c40f; }
+        .story-box { background: #1a1a1a; padding: 10px; border-radius: 4px; border-left: 4px solid #f1c40f; font-size: 13px; line-height: 1.4; }
+        .archive-link { display: block; margin-top: 10px; text-align: center; color: #f1c40f; text-decoration: none; font-weight: bold; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -28,137 +28,76 @@
 <div class="container">
     <div class="header"><h2>🍳 THE FRIED LIVER SOCIETY</h2></div>
     <div class="section-title">🔥 NEW ARRIVALS</div>
-    <div id="members" class="card-list">
-        <div style="text-align:center;">Sizzling members...</div>
-    </div>
+    <div id="members" class="card-list"><div style="text-align:center;">Sizzling members...</div></div>
 </div>
 
 <div class="container">
     <div class="section-title">📋 THE MENU</div>
     <div class="card-list">
-        <a href="https://www.chess.com/club/the-tomato-club-1" class="card" target="_blank" rel="noopener noreferrer">
-            <span>🤝 PARTNERSHIPS</span><span>Join</span>
-        </a>
-        <a href="https://www.chess.com/club/the-fried-liver-society" class="card" target="_blank" rel="noopener noreferrer">
-            <span>🛡️ ACTIVE CHECK</span><span>Confirm</span>
-        </a>
-        <a href="https://www.chess.com/club/the-fried-liver-society/forum/view/100-cheer-challenge-3" class="card" target="_blank" rel="noopener noreferrer">
-            <span>🙌 CHEER CHALLENGE</span><span>Win!</span>
-        </a>
-        <a href="https://www.chess.com/forum/post?gid=879777" class="card" target="_blank" rel="noopener noreferrer">
-            <span>✍️ CREATE FORUM</span><span>Post</span>
-        </a>
+        <a href="https://www.chess.com/club/the-tomato-club-1" class="card" target="_blank"><span>🤝 PARTNERSHIPS</span><span>Join</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society" class="card" target="_blank"><span>🛡️ ACTIVE CHECK</span><span>Confirm</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society/forum/view/100-cheer-challenge-3" class="card" target="_blank"><span>🙌 CHEER CHALLENGE</span><span>Win!</span></a>
+        <a href="https://www.chess.com/club/the-fried-liver-society/forum" class="card" target="_blank"><span>✍️ CREATE FORUM</span><span>Post</span></a>
     </div>
 
     <div class="section-title">📈 LIVE GROWTH TRACKER</div>
     <div class="tracker-box">
         <div id="tracker-text" class="stats-text">Loading Club Stats...</div>
         <div class="bar-bg"><div id="progress-bar" class="bar-fill"></div></div>
-        <div id="milestone-labels" class="stats-text">Calculating...</div>
+        <div class="stats-text">✅ 25 | ✅ 50 | ✅ 75 | ⚪ 100:🔜</div>
     </div>
 
     <div class="section-title">📖 CONTINUE THE STORY</div>
-    <div class="tracker-box" style="border-left: 4px solid #f1c40f;">
-        <p class="stats-text" style="color: #ffffff; line-height: 1.6; text-transform: none;">
-            <span style="color: #e67e22; font-weight: bold;">Current Arc: The Golden Pan</span> <br>
-            The heat is rising! As we reach for the next milestone, every new member adds another secret ingredient to the society's success.
-        </p>
-        <a href="https://www.chess.com/club/the-fried-liver-society/forum" target="_blank" rel="noopener noreferrer" style="color: #f1c40f; font-size: 11px; text-decoration: none;">[ OPEN ARCHIVES ]</a>
+    <div class="story-box">
+        <strong>Current Arc: The Golden Pan</strong><br>
+        The heat is rising! As we reach for the next milestone, every new member adds another secret ingredient to the society's success.
+        <a href="https://www.chess.com/club/the-fried-liver-society/forum/view/continue-the-story-1" class="archive-link" target="_blank">[ OPEN ARCHIVES ]</a>
     </div>
 
     <div class="section-title">🏆 HALL OF FAME</div>
     <div class="card-list">
-        <a href="https://www.chess.com/member/eeveedoeschess" class="card" target="_blank" rel="noopener noreferrer"><span>🌟 @EeveeDoesCHESS</span></a>
-        <a href="https://www.chess.com/member/allenspeckhals" class="card" target="_blank" rel="noopener noreferrer"><span>🌟 @AllenSpeckhals</span></a>
-        <a href="https://www.chess.com/member/conan10edogawa" class="card" target="_blank" rel="noopener noreferrer"><span>🌟 @Conan10Edogawa</span></a>
-        <a href="https://www.chess.com/member/trimitziosp7" class="card" target="_blank" rel="noopener noreferrer"><span>🌟 @TrimitziosP7 (FM)</span></a>
+        <a href="https://www.chess.com/member/eeveedoeschess" class="card" target="_blank"><span>🌟 @EeveeDoesCHESS</span></a>
+        <a href="https://www.chess.com/member/allenspeckhals" class="card" target="_blank"><span>🌟 @AllenSpeckhals</span></a>
+        <a href="https://www.chess.com/member/conan10edogawa" class="card" target="_blank"><span>🌟 @Conan10Edogawa</span></a>
+        <a href="https://www.chess.com/member/trimitziosp7" class="card" target="_blank"><span>🌟 @TrimitziosP7 (FM)</span></a>
     </div>
 </div>
 
 <script>
     const CLUB_SLUG = 'the-fried-liver-society';
 
-    // Helper to calculate relative time
-    function getRelativeTime(timestamp) {
-        const now = new Date();
-        const joined = new Date(timestamp * 1000);
-        const diffInSeconds = Math.floor((now - joined) / 1000);
-
-        if (diffInSeconds < 60) return 'just now';
-        
-        const minutes = Math.floor(diffInSeconds / 60);
-        if (minutes < 60) return `${minutes}m ago`;
-        
-        const hours = Math.floor(minutes / 60);
-        if (hours < 24) return `${hours}h ago`;
-        
-        const days = Math.floor(hours / 24);
-        if (days < 30) return `${days}d ago`;
-        
-        const months = Math.floor(days / 30);
-        if (months < 12) return `${months}mo ago`;
-        
-        return `${Math.floor(months / 12)}y ago`;
-    }
-
     async function updateDashboard() {
         try {
             const memRes = await fetch(`https://api.chess.com/pub/club/${CLUB_SLUG}/members`);
             const memData = await memRes.json();
-            
             const profRes = await fetch(`https://api.chess.com/pub/club/${CLUB_SLUG}`);
             const profData = await profRes.json();
             
             const count = profData.members_count;
-            const goal = Math.ceil((count + 1) / 100) * 100;
+            const goal = 100;
             const percent = Math.min((count / goal) * 100, 100);
 
-            const progressBar = document.getElementById('progress-bar');
             document.getElementById('tracker-text').innerText = `Current Milestone: ${count} / ${goal} Members`;
-            
-            if (percent >= 95) {
-                progressBar.classList.add('milestone-reached');
-            } else {
-                progressBar.classList.remove('milestone-reached');
-            }
+            setTimeout(() => { document.getElementById('progress-bar').style.width = percent + '%'; }, 500);
 
-            setTimeout(() => {
-                progressBar.style.width = percent + '%';
-            }, 500);
-
-            const previousMilestone = goal - 100;
-            document.getElementById('milestone-labels').innerHTML = `✅ ${previousMilestone} reached | ⚪ Next Goal: ${goal} | 🔥 Keep Sizzling!`;
-
-            // Combine and sort members by join date (most recent first)
             const all = [...memData.weekly, ...memData.monthly, ...memData.all_time];
             all.sort((a, b) => b.joined - a.joined);
-
             const container = document.getElementById('members');
             container.innerHTML = '';
-
-            // Display top 8 most recent arrivals
+            
+            // Showing top 8 newest members
             all.slice(0, 8).forEach(m => {
-                const relativeTime = getRelativeTime(m.joined);
+                const d = new Date(m.joined * 1000);
                 const card = document.createElement('a');
                 card.href = `https://www.chess.com/member/${m.username}`;
-                card.target = "_blank";
-                card.rel = "noopener noreferrer";
+                card.target = "_blank"; 
                 card.className = 'card';
-                card.innerHTML = `
-                    <span class="username">@${m.username}</span>
-                    <span class="status" style="color: #f1c40f;">${relativeTime}</span>
-                `;
+                card.innerHTML = `<span class="username">@${m.username}</span><span class="status">${d.toLocaleDateString()}<br>${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span>`;
                 container.appendChild(card);
             });
-        } catch (e) {
-            console.error("The kitchen is lagging!", e);
-        }
+        } catch (e) { console.error("Update failed", e); }
     }
-
-    // Run immediately and then every minute to keep relative times fresh
     updateDashboard();
-    setInterval(updateDashboard, 60000);
 </script>
-
 </body>
 </html>
