@@ -92,7 +92,7 @@
             const profData = await profRes.json();
             
             const count = profData.members_count;
-            const goal = 100;
+            const goal = Math.ceil((count + 1) / 50) * 50;
             const percent = Math.min((count / goal) * 100, 100);
 
             document.getElementById('tracker-text').innerText = `Current Milestone: ${count} / ${goal} Members`;
